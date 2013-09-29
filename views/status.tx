@@ -1,0 +1,22 @@
+
+: cascade splash
+
+: around message -> {
+
+  : given $status.response.status {
+  :  when "red" {
+      <div class='alert alert-error'>
+  :  }
+  :  when "yellow" {
+      <div class='alert alert-block'>
+  :  }
+  :  when "green" {
+      <div class='alert alert-success'>
+  :  }
+  : }
+        <a class='close' data-dismiss='alert'>×</a>
+        <h4 class='alert-heading'>Cluster <: $status.response.cluster_name  :></h4>
+        <span>The cluster health is <: $status.response.status :></span>
+  </div>
+
+: }

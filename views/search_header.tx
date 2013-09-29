@@ -1,0 +1,97 @@
+
+<style type='text/css'>
+  /*<![CDATA[*/
+    .home-link, .home-link:visited, .home-link:hover {
+      text-decoration: none;
+      color: black;
+    }
+    .simple-nav {
+      font-size: 1.2em;
+      line-height: 1.1em;
+      margin-top: 1em;
+    }
+    .simple-nav a, .simple-nav a:visited {
+      color: grey;
+      padding-left: .4em;
+    }
+    .search-in-header {
+      position: relative;
+      margin-top: .5em;
+      margin-right: 16em;
+      width: 22em;
+    }
+    .search-in-header i {
+      position: absolute;
+      top: 0.35em;
+      left: 0.5em;
+      font-size: 1.8em;
+      color: #aaa;
+    }
+    .search-in-header input {
+      line-height: 1.2em;
+      height: 1.4em;
+      font-size: 1.6em;
+      width: 22em;
+      padding-left: 2em;
+    }
+    .span-header {
+      margin-top: 1.2em;
+      margin-bottom: -1.3em;
+    }
+    .simple-nav-outer {
+      position: relative;
+      width: 35em;
+    }
+    .simple-nav-bump-up {
+      margin-top: -1em;
+    }
+    .simple-nav {
+      position: absolute;
+      height: 2em;
+      top: 50%;
+      margin-top: 1em;
+      right: 0;
+    }
+    .simple-nav .pull-right {
+      margin-top: -0.05em;
+    }
+    .simple-nav .pull-right img {
+      margin-top: -0.2em;
+    }
+    .simple-nav > * {
+      margin-left: .4em;
+    }
+    .simple-nav.smaller {
+      font-size: 1em;
+      line-height: 2em;
+    }
+  /*]]>*/
+</style>
+
+<div class='row-fluid'>
+  <div class='span-header span3'>
+    <a class='home-link' href='<: $page.logo.link :>'>
+      <img src='<: $page.logo.path :>' width='110' height='110' />
+    </a>
+  </div>
+  <div class='span-header span9'>
+    <div class='pull-right'>
+      <div class='simple-nav-outer'>
+        <div class='simple-nav smaller'>
+          <div class='pull-right'>
+          </div>
+          <a href='/status'>Status</a>
+          <a href='/logout'>Logout</a>
+        </div>
+      </div>
+    </div>
+    <form action='<: $page.search_action :>' id='search-form' method='GET'>
+      <div class='search-in-header'>
+        <input class='input search-query search-input' id='search-input' name='q' placeholder='' type='text' value='<: $page.query :>' />
+        <i class='icon-search'></i>
+      </div>
+    </form>
+  </div>
+</div>
+
+<hr />

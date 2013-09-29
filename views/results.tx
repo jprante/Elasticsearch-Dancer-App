@@ -1,0 +1,103 @@
+: cascade layout
+
+: around body -> {
+
+<body>
+  <div class='notifications top-left'></div>
+  <div class='container-fluid'>
+
+ <style type='text/css'>
+  /*<![CDATA[*/
+    .item-paging {
+      text-align: center;
+      margin-top: 1em;
+    }
+    .list-info {
+       margin-bottom: .5em;
+       background-color: #f8f8f8;
+       padding: .5em;
+       margin-bottom: .5em;
+    }
+    .gap {
+      display: none;
+    }    
+    .nav-list > .active > a {
+      background-color: rgb(56, 166, 203);
+    }
+    
+    .nav-list > .active > a:hover {
+      background-color: rgb(6, 116, 153);
+    }
+    
+    h6 b, h6 a {
+      font-size: 1.2em;
+      line-height: 1.3em;
+      margin-left: 0.3em;
+    }
+    
+    h6 b {
+      color: black;
+    }
+  /*]]>*/
+</style>
+
+: include search_header
+
+<div class='row-fluid'>
+
+  <div class='span3'>
+   : include facets
+  </div>
+  
+  <div class='span9'>
+    <div class='list-info'>
+      <div class='pull-right'>
+        <h6 class='number'>Page <: $page.paginate.current_page :> of <:$page.paginate.total_entries :> results</h6>
+      </div>
+      <span>
+        <h6>
+          Sort by:
+          : if $page.sort == 'year' {
+          <a href="<: sort_link($page.query, 'relevance', $page.order) :>">relevance</a>
+          <b>year</b>           
+          : }
+          : else {
+          <b>relevance</b>
+          <a href="<: sort_link($page.query, 'year', 'desc' ):>">year</a>
+          : }
+        </h6>
+      </span>
+    </div>
+    
+   <style type='text/css'>
+      /*<![CDATA[*/
+        .search-box {
+          padding: 0 .6em;
+        }
+        .search-info {
+          padding: .3em 0;
+        }
+      /*]]>*/
+   </style>
+    
+   : include item_list
+    
+   <div class='item-paging bottom'>
+        : will_paginate( $page.paginate, $page.query )
+   </div>
+
+</div> 
+
+</div>
+</body>
+
+: }
+
+: around footer {
+
+<hr />
+<div class='footer'>
+    Source: <: $page.result[0].url :>
+</div>
+
+: }

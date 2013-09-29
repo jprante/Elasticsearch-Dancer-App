@@ -1,0 +1,47 @@
+
+appname: "Elasticsearch::Dancer::App"
+
+charset: "UTF-8"
+
+session: Simple
+session_dir: /var/tmp/dancer_sessions/
+session_expires: 8 hours
+
+template: xslate
+engines:
+   xslate:
+     cache_dir: /var/tmp/xslate_cache/
+     cache: 1
+     extension: tx
+     html_builder_module: 
+        - "Elasticsearch::Dancer::App::Functions"
+        - ["will_paginate", "sort_link", "facet_reset", "facet_link", "field", "json"]
+
+pagination:
+    entries_per_page: 10
+
+logo:
+    path: /img/bonsai.png
+    link: /
+
+elasticsearch:
+    uri: 
+        - http://10.1.1.37:9200/test
+    fields:
+       title: _source.title
+       description: _source.description
+       url: _source.url
+       date: _source.year
+    facets:
+        Language:
+            terms:
+                field: language
+        Date:
+            terms:
+                field: year
+    filter:
+        Language: language
+        Date: year
+    sort:
+        relevance: _score
+        year: year

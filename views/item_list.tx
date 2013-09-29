@@ -1,0 +1,93 @@
+<style type='text/css'>
+  /*<![CDATA[*/
+    .item-data {
+      padding: 1em;
+    }
+    td {
+      vertical-align: top;
+      padding: .7em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table:first_child {
+      border-top: 1px solid #eee;
+    }
+    tr {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5em;
+    }
+    .item-data a {
+      margin-left: 0.2em;
+      margin-right: 0.2em;
+    }
+    .hl {
+      font-weight: bolder;
+    }
+    .extra {
+      color: #999;
+      font-size: 1.2em;
+      line-height: 1.3em;
+    }
+    .lead {
+      margin-bottom: .7em;  
+    }
+    .item-links-outer {
+      margin-top: 1.5em;
+      position: relative;
+    }
+    .item-links {
+      position: absolute;
+      top: 50%;
+      height: 1.6em;
+      margin-top:-0.8em;
+    }
+    .item-links img {
+      margin-top: -0.33em;
+    }
+    .item-links a {
+      margin-right: 1.5em;
+    }
+    .item-data .extra span {
+      font-size: .9em;
+      line-height: 1.5em;
+    }
+    .label {
+      font-weight: normal;
+    }
+    .item-data .lead {
+      margin-bottom: .2em;
+    }
+    .item-data .extra b {
+      font-size: 1.1em;
+    }
+  /*]]>*/
+</style>
+
+<table>
+   : for $page.result[0].json.hits.hits -> $item {
+  <tr>
+    <td class='item-data'>
+      <p class='lead'>
+        <span class="hl"><: field('title', $item) :></span>
+      </p>
+      <p class='extra' style='margin-top: .5em;'>
+        <span>
+          <b><: field('date', $item) :></b> -
+          <b><: $item._index :>/<: $item._type :>/<: $item._id :></b>
+        </span>
+      </p>
+      <p class='expand'>Description: <span class="hl"><: field('description', $item) :></span></p>
+      <div class='item-links-outer'>
+        <div class='item-links'>
+          <a href='<: field('url', $item) :>'>
+            <i class='icon-external-link'></i>
+            <: field('url', $item) :>
+          </a>
+        </div>
+      </div>
+    </td>
+  </tr>        
+   : }
+</table>

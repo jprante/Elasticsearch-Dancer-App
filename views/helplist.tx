@@ -1,0 +1,37 @@
+
+          <style type='text/css'>
+            /*<![CDATA[*/
+              dl, dd, dt {
+                line-height: 1.6em;
+              }
+              dd {
+                margin-bottom: 0.4em;
+              }
+            /*]]>*/
+          </style>
+          <script type='text/javascript'>
+            //<![CDATA[
+              $(document).ready(function() {
+                $('.example-link').click(function(e) {
+                  var $searchInput = $('.search-input');
+                  $searchInput.val($(this).text());
+                  $searchInput.focus();
+                  $('html, body').animate({scrollTop:0});
+                });
+              });
+            //]]>
+          </script>
+          <dl class='lead'>
+            <dt>
+              <a class='example-link' href='#'>Google search engine</a>
+            </dt>
+            <dd>Find titles or descriptions.</dd>
+            <dt>
+              <a class='example-link' href='#'>+google !search</a>
+            </dt>
+            <dd>Put a + in front of a query term to force it to appear in search results (or a ! to exclude it).</dd>
+            <dt>
+              <a class='example-link' href='#'>language:en</a>
+            </dt>
+            <dd>Find a particular language</dd>
+          </dl>
