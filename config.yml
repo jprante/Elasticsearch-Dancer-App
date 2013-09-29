@@ -26,7 +26,7 @@ logo:
 
 elasticsearch:
     uri: 
-        - http://10.1.1.37:9200/test
+        - http://127.0.0.1:9200/test
     fields:
        title: _source.title
        description: _source.description
